@@ -16,9 +16,6 @@
 - include: Debian.yml
   when: ansible_os_family == 'Debian'
 
-- include: RedHat.yml
-  when: ansible_os_family == 'RedHat'
-
 - name: install youtube-dl with default package manager
   action: "{{backcompat_pkg_mgr}} name={{package_name}}"
   sudo: yes
