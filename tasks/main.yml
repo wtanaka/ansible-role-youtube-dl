@@ -1,13 +1,20 @@
 ---
+- name: check for short-circuit
+  raw: "> /dev/null command -v youtube-dl;"
+  register: installed
+  ignore_errors: True
+  changed_when: False
+
+- name: set should_run fact
+  set_fact:
+    should_run: "{{installed|failed or not youtube_dl_should_shortcircuit}}"
+
 - include: compat.yml
 
 - include: include_vars.yml
 
 - include: Debian.yml
   when: ansible_os_family == 'Debian'
-
-- include: RedHat.yml
-  when: ansible_os_family == 'RedHat'
 
 - name: install youtube-dl with default package manager
   action: "{{backcompat_pkg_mgr}} name={{package_name}}"
