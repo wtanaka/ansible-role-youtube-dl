@@ -1,10 +1,10 @@
 ---
 - name: apt-get update
   apt: update_cache=true cache_valid_time=3600
-  sudo: yes
+  become: true
 
 - name: add backports repository
-  sudo: yes
+  become: true
   apt_repository: >
     repo="deb http://ftp.debian.org/debian {{ansible_distribution_release}}-backports main"
     state=present
@@ -15,6 +15,6 @@
 
 # Download keys and package lists
 - name: apt-get update
-  sudo: yes
+  become: true
   apt: update_cache=yes cache_valid_time=0
   when: should_run and backports_result.changed
