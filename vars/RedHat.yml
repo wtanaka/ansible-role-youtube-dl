@@ -1,2 +1,3 @@
 ---
-package_name: youtube-dl
+package_names:
+- youtube-dl
