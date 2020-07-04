@@ -122,6 +122,7 @@
     should_run and
     (backcompat_pkg_mgr == "yum" or backcompat_pkg_mgr == "apt")
        and wget_result.rc != 0
+  sudo: yes
 
 # Install wget due to https://github.com/ansible/ansible/issues/12161
 # Use command since dnf was only added as a module in ansible 1.9.0
