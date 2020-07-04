@@ -7,10 +7,11 @@
 
 - name: set should_run fact
   set_fact:
-    should_run: "{{installed|failed or not youtube_dl_should_shortcircuit}}"
+    should_run: "{{installed.rc != 0 or not youtube_dl_should_shortcircuit}}"
+
+- name: set should_run fact
+  set_fact:
+    should_run: True
 
 - include: include_vars.yml
 - include: sudoorbecome.yml
-
-- include: Debian.yml
-  when: ansible_os_family == 'Debian'

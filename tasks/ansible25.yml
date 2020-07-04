@@ -1,6 +1,6 @@
 ---
 - { become: yes, include: compat.yml }
-- { become: yes, include: install_package_names_20.yml }
+- { become: yes, include: install_package_names_25.yml }
 #- become: yes
 #  include: Debian.yml
 #  when: ansible_os_family in [ 'Debian', 'Linuxmint' ]
